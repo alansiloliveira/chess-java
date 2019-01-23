@@ -28,7 +28,7 @@ public class PartidaDeXadrez {
 	public PecaDeXadrez perfomanceMovimentoDaPeca(PosicaoXadrez posicaoInicial, PosicaoXadrez posicaoDestino){
 		Posicao inicial = posicaoInicial.paraPosicao();
 		Posicao destino = posicaoDestino.paraPosicao();
-		validaPosicaoInicial(inicial);
+		validaPosicaoOrigem(inicial);
 		Peca pecaCapturada = movimentacao(inicial, destino);
 		return (PecaDeXadrez)pecaCapturada;
 	}
@@ -40,9 +40,12 @@ public class PartidaDeXadrez {
 		return pecaCapturada;
 	}
 	
-	private void validaPosicaoInicial(Posicao posicao) {
+	private void validaPosicaoOrigem(Posicao posicao) {
 		if(!tabuleiro.haUmaPeca(posicao)) {
 			throw new ChessException("Não é peça nessa posição"); 
+		}
+		if (!tabuleiro.peca(posicao).existeAlgumMovimentoPossivel()) {
+			throw new ChessException("Não existe movimentos possiveis para a peça escolhida");
 		}
 	}
 
