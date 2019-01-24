@@ -19,7 +19,7 @@ public class Programa {
 		while (true) {
 			try {
 				UI.limparTela();
-				UI.fazerTabuleiro(partidaDeXadrez.getPecas());
+				UI.fazerPartida(partidaDeXadrez);
 				System.out.println();
 				System.out.print("Origem: ");
 				PosicaoXadrez origem = UI.leiaPosicaoXadrez(sc);
