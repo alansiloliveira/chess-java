@@ -16,6 +16,7 @@ public class PartidaDeXadrez {
 	private Cor jogadorAtual;
 	private Tabuleiro tabuleiro;
 	private boolean check;
+	private boolean checkMate;
 	
 	private List<Peca> pecasNoTabuleiro = new ArrayList<>();
 	private List<Peca> pecasCapturadas = new ArrayList<>();
@@ -26,6 +27,7 @@ public class PartidaDeXadrez {
 		turno = 1;
 		jogadorAtual = Cor.BRANCO;
 		check = false;
+		checkMate = false;
 		iniciaPartida();
 	}
 	
@@ -39,6 +41,10 @@ public class PartidaDeXadrez {
 	
 	public boolean getCheck() {
 		return check;
+	}
+	
+	public boolean getCheckMate() {
+		return checkMate;
 	}
 
 	public PecaDeXadrez[][] getPecas() {
@@ -71,7 +77,12 @@ public class PartidaDeXadrez {
 		
 		check = (testeCheck(oponente(jogadorAtual))) ? true : false;
 		
-		proximoTurno();
+		if(testeCheckMate(oponente(jogadorAtual))) {
+			checkMate = true;
+		}
+		else {
+			proximoTurno();
+		}
 		return (PecaDeXadrez)pecaCapturada;
 	}
 	
@@ -145,6 +156,32 @@ public class PartidaDeXadrez {
 			}
 		}
 		return false;
+	}
+	
+	private boolean testeCheckMate(Cor cor) {
+		if (!testeCheck(cor)) {
+			return false;
+		}
+		List<Peca> list = pecasNoTabuleiro.stream().filter(x -> ((PecaDeXadrez)x).getCor() == cor).collect(Collectors.toList());
+		for (Peca p : list) {
+			boolean[][] mat = p.movimentoPossivel();
+			for(int i =0; i<tabuleiro.getLinhas(); i++) {
+				for(int j=0; j<tabuleiro.getColunas(); j++) {
+					if(mat[i][j]) {
+						Posicao origem = ((PecaDeXadrez)p).getPosicaoPeca().paraPosicao();
+						Posicao destino = new Posicao(i, j);
+						Peca pecaCapturada = movimentacao(origem, destino);
+						boolean testeCheck = testeCheck(cor);
+						movimentacaoNegada(origem, destino, pecaCapturada);
+						if(!testeCheck) {
+							return false;
+						}
+					}
+				}
+			}
+		}
+		return true;
+		
 	}
 
 	private void posicaoDaNovaPeca(char coluna, int linha, PecaDeXadrez peca) {
