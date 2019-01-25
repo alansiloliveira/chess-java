@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import boardgame.Peca;
 import boardgame.Posicao;
 import boardgame.Tabuleiro;
+import chess.pieces.Piao;
 import chess.pieces.Rei;
 import chess.pieces.Torre;
 
@@ -192,18 +193,28 @@ public class PartidaDeXadrez {
 	}
 
 	private void iniciaPartida() {
-		posicaoDaNovaPeca('c', 1, new Torre(tabuleiro, Cor.BRANCO));
-		posicaoDaNovaPeca('c', 2, new Torre(tabuleiro, Cor.BRANCO));
-		posicaoDaNovaPeca('d', 2, new Torre(tabuleiro, Cor.BRANCO));
-		posicaoDaNovaPeca('e', 2, new Torre(tabuleiro, Cor.BRANCO));
-		posicaoDaNovaPeca('e', 1, new Torre(tabuleiro, Cor.BRANCO));
 		posicaoDaNovaPeca('d', 1, new Rei(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('a', 1, new Torre(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('h', 1, new Torre(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('a', 2, new Piao(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('b', 2, new Piao(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('c', 2, new Piao(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('d', 2, new Piao(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('e', 2, new Piao(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('f', 2, new Piao(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('g', 2, new Piao(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('h', 2, new Piao(tabuleiro, Cor.BRANCO));
 
-		posicaoDaNovaPeca('c', 7, new Torre(tabuleiro, Cor.PRETO));
-		posicaoDaNovaPeca('c', 8, new Torre(tabuleiro, Cor.PRETO));
-		posicaoDaNovaPeca('d', 7, new Torre(tabuleiro, Cor.PRETO));
-		posicaoDaNovaPeca('e', 7, new Torre(tabuleiro, Cor.PRETO));
-		posicaoDaNovaPeca('e', 8, new Torre(tabuleiro, Cor.PRETO));
 		posicaoDaNovaPeca('d', 8, new Rei(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('a', 8, new Torre(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('h', 8, new Torre(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('a', 7, new Piao(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('b', 7, new Piao(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('c', 7, new Piao(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('d', 7, new Piao(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('e', 7, new Piao(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('f', 7, new Piao(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('g', 7, new Piao(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('h', 7, new Piao(tabuleiro, Cor.PRETO));
 	}
 }
