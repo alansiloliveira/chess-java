@@ -10,6 +10,7 @@ import boardgame.Tabuleiro;
 import chess.pieces.Bispo;
 import chess.pieces.Cavalo;
 import chess.pieces.Piao;
+import chess.pieces.Rainha;
 import chess.pieces.Rei;
 import chess.pieces.Torre;
 
@@ -195,7 +196,8 @@ public class PartidaDeXadrez {
 	}
 
 	private void iniciaPartida() {
-		posicaoDaNovaPeca('d', 1, new Rei(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO));
+		posicaoDaNovaPeca('d', 1, new Rainha(tabuleiro, Cor.BRANCO));
 		posicaoDaNovaPeca('a', 1, new Torre(tabuleiro, Cor.BRANCO));
 		posicaoDaNovaPeca('h', 1, new Torre(tabuleiro, Cor.BRANCO));
 		posicaoDaNovaPeca('b', 1, new Cavalo(tabuleiro, Cor.BRANCO));
@@ -212,6 +214,7 @@ public class PartidaDeXadrez {
 		posicaoDaNovaPeca('h', 2, new Piao(tabuleiro, Cor.BRANCO));
 
 		posicaoDaNovaPeca('e', 8, new Rei(tabuleiro, Cor.PRETO));
+		posicaoDaNovaPeca('d', 8, new Rainha(tabuleiro, Cor.PRETO));
 		posicaoDaNovaPeca('a', 8, new Torre(tabuleiro, Cor.PRETO));
 		posicaoDaNovaPeca('h', 8, new Torre(tabuleiro, Cor.PRETO));
 		posicaoDaNovaPeca('b', 8, new Cavalo(tabuleiro, Cor.PRETO));
